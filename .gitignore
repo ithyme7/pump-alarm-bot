@@ -1,6 +1,8 @@
-# Negeer de virtuele omgeving
+# Ignore the virtual environment and cache
 venv/
 __pycache__/
 
-# Negeer geheime sleutels
+# Ignore environment files
 .env
+query.env
+source.env
