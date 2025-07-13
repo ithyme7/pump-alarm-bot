@@ -1,8 +1,6 @@
 # Pump Alarm Bot
 
-This project contains a small Python script that reads trade volume data from
-[Dune Analytics](https://dune.com) and posts the results to a Telegram chat.
-It can be executed manually or scheduled using GitHub Actions.
+A Python bot that fetches token trade volume data from [Dune Analytics](https://dune.com) and posts the top movers to Telegram. Results are stored locally for historical analysis and a small bar chart is generated for each run.
 
 ## Setup
 
@@ -11,22 +9,21 @@ It can be executed manually or scheduled using GitHub Actions.
    ```bash
    pip install -r requirements.txt
    ```
-3. **Environment variables** – Provide the following values either via a `.env`
-   file or your environment:
+3. **Environment variables** – Copy `.env.example` to `.env` and fill in your values or export them in your environment:
    - `DUNE_API_KEY` – your Dune API key
    - `TELEGRAM_BOT_TOKEN` – Telegram bot token
    - `TELEGRAM_CHAT_ID` – ID of the chat that should receive alerts
 
 ## Usage
 
-Run the main script locally after setting the environment variables:
+Run the bot locally:
 
 ```bash
-python main.py
+python main.py --hours 24 --min-volume 1000 --limit 10
 ```
 
-The repository also contains a GitHub Actions workflow in
-`.github/workflows/main.yml` that runs `main.py` every 15 minutes when the
-required secrets are configured in your GitHub repository.
+A helper script `interactive_bot.py` provides Telegram commands (`/top`) to fetch the latest movers on demand.
 
-The SQL query used to fetch the data can be found in `query.sql` for reference.
+## GitHub Actions
+
+The repository includes a workflow that runs the bot every 15 minutes and a separate workflow that runs tests and linting on each push.

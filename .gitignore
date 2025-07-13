@@ -1,6 +1,13 @@
-# Negeer de virtuele omgeving
-venv/
+# Ignore Python caches and virtual environments
 __pycache__/
+venv/
 
-# Negeer geheime sleutels
+# Ignore secrets and config
 .env
+query.env
+source.env
+
+# Ignore runtime data
+bot.log
+data/
+charts/
