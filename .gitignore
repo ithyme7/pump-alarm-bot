@@ -1,0 +1,6 @@
+# Negeer de virtuele omgeving
+venv/
+__pycache__/
+
+# Negeer geheime sleutels
+.env
